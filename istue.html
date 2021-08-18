@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .madal{
+        position: fixed;
+        background-color: #000;
+        width: 100px;
+        height: 100px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: -1000px;
+        transition: 0.5;
+    }
+    .madall.active{
+        top: 100px;
+    }
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: #000;
+    }
+    .green{ background-color: green;}
+    .blue{ background-color: blue;}
+    .red{ background-color: red;}
+</style>
+
+<body>
+    <div id="app">
+        <div class="madal"></div>
+        {{isTrue}}
+        <div 
+        class="box" 
+        :class="classTitle" 
+        @click='isTrue = !isTrue'>
+        {{classTitle}}
+    </div>
+    <hr>
+    <input type="text" v-model ='classTitle'>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                    classTitle:'',
+                    isTrue:false
+            
+            },
+
+        })
+    </script>
+</body>
+
+</html>

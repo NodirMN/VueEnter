@@ -1,0 +1,92 @@
+<!-- Yangi kelgan mahsulotlarni bazaga kiritish formasini yarating. (Nomi, ishlab chiqilgan yili, ishlab chiqargan firma nomi, adres, email, qanaqa tipdagi mahsulot(oziq-ovqat, qurilish, texnika), qaysi do'konga tarqatish(checkbox) -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div id="app">
+        Mahsulot nomi:
+        <input type="text" placeholder="nomi" v-model='person.nomi'> <br>
+        Sana:
+        <input type="date" v-model='person.data'> <br>
+        Ishlab chiqargan:
+        <input type="text" placeholder="Firma nomi" v-model='person.ism'> <br>
+        Manzil:
+        <input type="text" placeholder="Ishlab chiqaruvchi" v-model='person.yosh'> <br>
+        Email:
+        <input type="email" placeholder="Ishlab chiqaruvchi" v-model='person.email'> <br>
+
+            Qaysi bolimga:
+        <select v-model='person.bolim'>
+            <option value="Oziq-ovqat">Oziq-ovqat</option>
+            <option value="Qurilish">Qurilish</option>
+            <option value="Texnika">Texnika</option>
+        </select><br>
+        Qaysi do'konga tarqatish: <br>
+        
+
+        <input type="checkbox"  value="Megaplanet" v-model="checkedNames.pu">
+        <label for="jack">Megaplanet</label>
+        <input type="checkbox"  value="Makro" v-model="checkedNames.pu">
+        <label for="john">Makro</label>
+        <input type="checkbox" value="Havas" v-model="checkedNames.pu">
+        <label for="mike">Havas</label>
+        <br>
+        <!-- <span>Checked names: </span> -->
+
+        <button @click='add()'>Qo'shish</button>
+        <hr>
+        <table border='1' width='100%' cellspacing='0' cellpadding='5'>
+            <tr>
+                <th>Nomi</th>
+                <th>Ishlab chiqarilgan sana</th>
+                <th>Firma nomi</th>
+                <th>Manzil</th>
+                <th>Email@</th>
+                <th>Qaysi turdagi maxsulot</th>
+                <th>Qaysi do'konga tarqatish</th>
+            </tr>
+            <tr v-for='human, of persons'>
+                <td>{{human.nomi}}</td>
+                <td>{{human.data}}</td>
+                <td>{{human.ism}}</td>
+                <td>{{human.yosh}}</td>
+                <td>{{human.email}}</td>
+                <td>{{human.bolim}}</td>
+                <td>{{checkedNames}}</td>
+
+            </tr>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                person: {},
+                persons: [],
+                checkedNames: {
+                    pu:[]
+                }
+            },
+            methods: {
+                add() {
+                    this.persons.push(this.person)
+                    this.person = {}
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

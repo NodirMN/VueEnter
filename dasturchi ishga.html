@@ -1,0 +1,83 @@
+<!-- Yangi dasturchini ro'yhatga olish (ism, familiya, email, telefon nomer, tugilgan yili, yashash manzili, biladigan
+dasturlash tili, nechi yil tajribasi mavjud, rasmi, qaysi bo'limga ishga kiryapdi, qo'shimcha ma'lumotlar) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div id="app">
+        <input type="text" placeholder="Name" v-model='person.ism'>
+        <input type="text" placeholder="Familiy" v-model='person.Familiya'>
+        <input type="email"placeholder="Email" v-model='person.email'>
+        <input type="tel" placeholder="Tell namber" v-model='person.namber'>
+        <input type="date"  v-model='person.data'>
+        <input type="manzil" placeholder="Yashash manzili" v-model='person.live'>
+        <select v-model='person.dastur'>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+            <option value="Php">php</option>
+        </select>
+        <input type="number" placeholder="ish tajribasi" v-model='person.work'>
+        <select v-model='person.bolim'>
+            <option value="Veb ilovalar ishlab chiqarish">Veb ilova ishlab chiqarish</option>
+            <option value="Mobil ilova">Mobil ilova</option>
+            <option value="Qollab quvatlash">Qollab quvatlash</option>
+            <option value="Boshqaruv bo'limi">Boshqaruv bo'limi</option>
+        </select>
+        <button @click='add()'>Qo'shish</button>
+        <hr>
+        <table border='1' width='100%' cellspacing='0' cellpadding='5'>
+            <tr>
+                <th>N</th>
+                <th>Ism</th>
+                <th>Familiya</th>
+                <th>Email</th>
+                <th>Telefon nomer</th>
+                <th>Tug'ilgan yili</th>
+                <th>Yashash manzili</th>
+                <th>Dasturlash tili</th>
+                <th>Tajriba</th>
+                <th>Bo'lim</th>
+            </tr>
+            <tr v-for='(human,i) of persons'>
+                <td>{{i+1}}</td>
+                <td>{{human.ism}}</td>
+                <td>{{human.Familiya}}</td>
+                <td>{{human.email}}</td>
+                <td>{{human.namber}}</td>
+                <td>{{human.data}}</td>
+                <td>{{human.live}}</td>
+                <td>{{human.dastur}}</td>
+                <td>{{human.work}}</td>
+                <td>{{human.bolim}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                person: {},
+                persons: []
+            },
+            methods: {
+                add() {
+                    this.persons.push(this.person)
+                    this.person = {}
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>
